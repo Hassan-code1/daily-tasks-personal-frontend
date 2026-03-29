@@ -67,13 +67,6 @@ A premium, glassmorphic daily tasks management application built with React, Vit
 
 ---
 
-## 🌐 Deployment (Vercel)
-
-This project is ready for deployment on Vercel:
-1. Push your code to GitHub.
-2. Link the project in Vercel.
-3. Add the `VITE_API_URL` environment variable pointing to your deployed backend URL.
-4. The `vercel.json` file is included to handle SPA routing (redirecting all routes to `index.html`).
 
 ## 📄 License
 
