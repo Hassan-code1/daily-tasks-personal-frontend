@@ -14,6 +14,7 @@ export function CalendarProvider({ children }) {
         setLoadingSummary(true);
         try {
             const { data } = await getSummary(month, year);
+            console.log(`[Debug] Summary for ${month}/${year}:`, data);
             const map = {};
             data.forEach((item) => { map[item.date] = item; });
             setSummaryMap(map);

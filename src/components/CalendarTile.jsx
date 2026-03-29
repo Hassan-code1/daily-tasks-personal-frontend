@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
-import { format, isToday, isPast, startOfDay } from 'date-fns';
+import { format, isToday, isPast } from 'date-fns';
 import StatusMarker from './StatusMarker';
 
 const tileVariants = {
@@ -14,25 +14,23 @@ const tileVariants = {
 
 function CalendarTile({ date, isCurrentMonth, summary, onClick, index }) {
     const today = isToday(date);
-    // date-fns isPast checks if date < now. We want date < today (midnight)
     const isDatePast = isPast(date) && !today;
     const allDone = summary.total > 0 && summary.completed === summary.total;
     const incompletePast = isDatePast && summary.total > 0 && summary.completed < summary.total;
 
     const staggerDelay = Math.min(index * 0.008, 0.25);
 
-    // Dynamic status classes
+    // Dynamic status classes with !important (!) to override base glass background
     const statusClasses = [
         'glass rounded-xl flex flex-col items-center justify-between p-2 cursor-pointer select-none',
         'min-h-[72px] transition-all duration-300',
         !isCurrentMonth ? 'opacity-30' : '',
         today ? 'tile-today' : '',
-        // Green: All tasks done (any day)
-        allDone ? 'bg-emerald-500/20 border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.2)]' : '',
+        // Green: All tasks done (vibrant enough to override)
+        allDone ? '!bg-emerald-500/35 border-emerald-400/60 shadow-[0_0_20px_rgba(16,185,129,0.3)]' : '',
         // Red: Past day with incomplete tasks
-        incompletePast ? 'bg-rose-500/20 border-rose-500/40 shadow-[0_0_15px_rgba(244,63,94,0.2)]' : '',
-        // Hover effects (only if not a past day or if it's today/future)
-        'hover:border-accent hover:shadow-[0_0_16px_rgba(167,139,250,0.4),0_8px_32px_rgba(0,0,0,0.4)]',
+        incompletePast ? '!bg-rose-500/35 border-rose-400/60 shadow-[0_0_20px_rgba(244,63,94,0.3)]' : '',
+        'hover:border-accent hover:shadow-[0_0_16px_rgba(167,139,250,0.4)]',
     ].join(' ');
 
     return (
@@ -52,10 +50,10 @@ function CalendarTile({ date, isCurrentMonth, summary, onClick, index }) {
             onKeyDown={(e) => e.key === 'Enter' && onClick(date)}
         >
             <span className={[
-                'text-sm font-medium self-start leading-none transition-colors',
+                'text-sm font-medium self-start leading-none transition-colors px-1 rounded',
                 today ? 'text-accent font-bold underline underline-offset-4' : 'text-white/90',
-                allDone ? 'text-emerald-300' : '',
-                incompletePast ? 'text-rose-300' : '',
+                allDone ? 'text-white bg-emerald-600/40' : '',
+                incompletePast ? 'text-white bg-rose-600/40' : '',
             ].join(' ')}>
                 {format(date, 'd')}
             </span>
