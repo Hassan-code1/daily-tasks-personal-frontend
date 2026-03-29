@@ -27,6 +27,6 @@ api.interceptors.response.use(
 export const getTasks = (date) => api.get('/tasks', { params: { date } });
 export const createTask = (data) => api.post('/tasks', data);
 export const updateTask = (id, data) => api.put(`/tasks/${id}`, data);
-export const deleteTask = (id) => api.delete(`/tasks/${id}`);
+export const deleteTask = (id, params = {}) => api.delete(`/tasks/${id}`, { params });
 export const getSummary = (month, year) =>
     api.get('/tasks/summary', { params: { month, year } });
