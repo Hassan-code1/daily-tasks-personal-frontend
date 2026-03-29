@@ -4,8 +4,8 @@ A premium, glassmorphic daily tasks management application built with React, Vit
 
 ## ✨ Key Features
 
-- **Premium Glassmorphic UI**: High-fidelity design with dark gradients, blur effects, and ambient orbs.
-- **Dynamic 42-Cell Calendar**: Custom grid generation (via `date-fns`) for a comprehensive monthly view.
+- **Premium Dark Indigo UI**: High-fidelity glassmorphic design featuring deep indigo and slate backgrounds with dynamic, colored status tiles (Green for 100% complete, Red for pending).
+- **Daily Recurring Tasks**: Create habits that recur infinitely. Includes granular control to "Hide" a task for one day or delete it completely.
 - **Fluid Animations**: 
   - Staggered grid entry for tiles.
   - Smooth modal transitions and task item reordering.

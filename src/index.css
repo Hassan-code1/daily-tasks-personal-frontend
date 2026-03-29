@@ -4,9 +4,12 @@
 /* ── Tailwind v4 theme tokens ───────────────────────────── */
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
-  --color-accent: #a78bfa;
-  --color-success: #34d399;
-  --color-danger: #f87171;
+  --color-accent: #6366f1;
+  /* Indigo */
+  --color-success: #10b981;
+  /* Emerald */
+  --color-danger: #ef4444;
+  /* Rose */
 }
 
 /* ── Base reset & body ──────────────────────────────────── */
@@ -24,7 +27,10 @@ body,
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: radial-gradient(at 0% 0%, #0f172a 0, transparent 50%),
+    radial-gradient(at 50% 0%, #020617 0, transparent 50%),
+    radial-gradient(at 100% 0%, #1e1b4b 0, transparent 50%);
+  background-color: #020617;
   background-attachment: fixed;
   min-height: 100vh;
   color: #f1f5f9;
@@ -44,33 +50,34 @@ body::after {
 }
 
 body::before {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #7c3aed, transparent);
-  top: -150px;
-  left: -150px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #312e81, transparent);
+  top: -200px;
+  left: -200px;
 }
 
 body::after {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #1d4ed8, transparent);
-  bottom: -120px;
-  right: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #1e1b4b, transparent);
+  bottom: -150px;
+  right: -150px;
 }
 
 /* ── Custom reusable classes ────────────────────────────── */
 .glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .tile-today {
-  border-color: #a78bfa !important;
-  box-shadow: 0 0 20px rgba(167, 139, 250, 0.4), 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  border-color: #f8fafc !important;
+  border-width: 2px !important;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15) !important;
 }
 
 .text-gradient {
