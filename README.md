@@ -1,16 +1,80 @@
-# React + Vite
+# Daily Tasks Calendar — Frontend (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, glassmorphic daily tasks management application built with React, Vite, Tailwind CSS v4, and Framer Motion. This frontend offers a fluid, interactive user experience for organizing daily tasks with real-time status tracking.
 
-Currently, two official plugins are available:
+## ✨ Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Premium Glassmorphic UI**: High-fidelity design with dark gradients, blur effects, and ambient orbs.
+- **Dynamic 42-Cell Calendar**: Custom grid generation (via `date-fns`) for a comprehensive monthly view.
+- **Fluid Animations**: 
+  - Staggered grid entry for tiles.
+  - Smooth modal transitions and task item reordering.
+  - Animated status markers (✔ checkmarks vs task ratios).
+  - Respects OS-level `prefers-reduced-motion` settings.
+- **Optimistic UI Updates**: Instant task toggling and deletion for a "snappy" feel.
+- **Authentication Pages**: User login and registration with animated tab switches.
+- **State Management**: Context API for global calendar navigation and authentication persistence.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: React 19 (Vite 8)
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion
+- **Date Utilities**: Date-fns
+- **HTTP Client**: Axios (with JWT interceptors)
 
-## Expanding the ESLint configuration
+## 📦 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16+)
+- A running [Daily Tasks Backend](https://github.com/Hassan-code1/daily-tasks-personal-backend)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Hassan-code1/daily-tasks-personal-frontend.git
+   cd daily-tasks-personal-frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure Environment Variables:
+   Create a `.env` file (refer to `.env.example`):
+   ```env
+   VITE_API_URL=http://localhost:5000
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🏗️ Architecture
+
+- **`src/components/`**: Atomic components like `CalendarTile`, `StatusMarker`, and `DayModal`.
+- **`src/context/`**: 
+  - `AuthContext`: Manages login/logout state and JWT persistence in `localStorage`.
+  - `CalendarContext`: Handles month navigation and fetches summary metrics.
+- **`src/api/`**: 
+  - `tasks.js`: Axios instance with request/response interceptors to handle `Authorization` headers and `401 Unauthorized` redirects automatically.
+
+---
+
+## 🌐 Deployment (Vercel)
+
+This project is ready for deployment on Vercel:
+1. Push your code to GitHub.
+2. Link the project in Vercel.
+3. Add the `VITE_API_URL` environment variable pointing to your deployed backend URL.
+4. The `vercel.json` file is included to handle SPA routing (redirecting all routes to `index.html`).
+
+## 📄 License
+
+This project is licensed under the MIT License.
